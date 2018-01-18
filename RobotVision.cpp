@@ -17,8 +17,7 @@ void main()
 	
 	int ObjectMinPrev = 0; //creates a copy of the max of Y from the previous frame
 
-	findObjectCentre();
-} //Declares variables for the program.
+	findObjectCentre();} //Declares variables for the program.
 
 void findObjectCentre()
 {
@@ -31,7 +30,6 @@ void findObjectCentre()
 		objectMaxX(0);
 
 		int ObjectMinY = 0;
-
 		ObjectMinY(0);
 
 		int ObjectMaxY = 0;
@@ -71,7 +69,7 @@ void findObjectCentre()
 
 void steerToObject()
 {
-	While(int ObjectCentre[0] > 75) //moves left until approximately at the centre
+	while(int ObjectCentre[0] > 75) //moves left until approximately at the centre
 	{
 		DummyTurnLeft = 1;
 
@@ -80,7 +78,7 @@ void steerToObject()
 
 	DummyTurnLeft = 0; //stops turning left
 
-	While(ObjectCentre[0] < 65) //moves right until approximately at the centre
+	while(ObjectCentre[0] < 65) //moves right until approximately at the centre
 	{
 		DummyTurnRight = 1;
 
