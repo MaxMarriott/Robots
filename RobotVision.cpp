@@ -1,4 +1,4 @@
-=0oo//#include required things
+//#include required things
 #include <iostream>
 #include <GripPipeline.cpp>
 #include <GripPipeline.h>
