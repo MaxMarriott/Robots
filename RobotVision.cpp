@@ -1,4 +1,4 @@
-oo//#include required things
+=0oo//#include required things
 #include <iostream>
 #include <GripPipeline.cpp>
 #include <GripPipeline.h>
@@ -7,14 +7,15 @@ oo//#include required things
 
 void main()
 {
-	int DummyTurnLeft; //Simulates turning left
+	int DummyTurnLeft = 0; //Simulates turning left
 
-	int DummyTurnRight; //Simulates turning right
+	int DummyTurnRight = 0; //Simulates turning right
 
-	int DummyDriveForwards; //Simulates driving forward
+	int DummyDriveForwards = 0; //Simulates driving forward
 
 	bool DummyLaserSensor; //Simulates the successful pickup of a block
-	int ObjectMinPrev; //creates a copy of the max of Y from the previous frame
+	
+	int ObjectMinPrev = 0; //creates a copy of the max of Y from the previous frame
 
 	findObjectCentre();
 } //Declares variables for the program.
