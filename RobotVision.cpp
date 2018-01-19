@@ -140,7 +140,10 @@ void PickUpObject()
 int FindObjectMinX(int _val)
 {
 	//int ObjectMinX = First white pixel with the lowest X value
-
+//Debug
+std::cout << "value for Min X" << endl;
+std::cin >> _val;
+	
     return _val;
 }
 
@@ -149,6 +152,9 @@ int FindObjectMinX(int _val)
 int FindObjectMaxX(int _val)
 {
 	//int ObjectMaxX = First white pixel with the highest X value
+//Debug
+std::cout << "value for Max X" << endl;	
+std::cin >> _val;
 
     return _val;
 }
@@ -157,6 +163,9 @@ int FindObjectMaxX(int _val)
 int FindObjectMinY(int _val)
 {
 	//int ObjectMinY = First white pixel with the lowest Y value
+//Debug
+std::cout << "value for Min Y" << endl;	
+std::cin >> _val;
 
     return _val;
 }
@@ -165,6 +174,10 @@ int FindObjectMinY(int _val)
 int FindObjectMaxY(int _val)
 {
 	//int ObjectMaxY = First white pixel with the highest Y value
+	
+//Debug
+std::cout << "value for Max Y" << endl;
+std::cin >> _val;
 
     return _val;
 }
