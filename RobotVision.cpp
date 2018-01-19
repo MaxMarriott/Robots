@@ -19,7 +19,7 @@ bool dummy_laser_sensor = false; //Simulates the successful pickup of a block
 
 int object_y_min_prev = 0; //creates a copy of the max of Y from the previous frame
 
-int object_centre[2] = { 1, 1 }; //object_centre[0] = x value, objectcentre[1] = y value
+int object_centre[2] = { 0, 0 }; //object_centre[0] = x value, objectcentre[1] = y value
 
 int object_min_x = 0; //the 0 in this decleration represents how many rows UP the FIRST white pixel is! 
 
