@@ -1,3 +1,9 @@
+
+//VISION PROTOTYPE/SKELETON
+//####################################
+
+//#include required include statements
+#include <iostream>
 //VISION PROTOTYPE/SKELETON
 //####################################
 
@@ -9,11 +15,11 @@
 //all referances to the white object in the input will be refered to as simply "Object", for simplicity's sake
 //GLOBAL DECLERATIONS
 //########################################################################################
-int dummy_turn_left = 0; //Simulates turning left
+double dummy_turn_left = 0; //Simulates turning left
 
-int dummy_turn_right = 0; //Simulates turning right
+double dummy_turn_right = 0; //Simulates turning right
 
-int dummy_drive_forwards = 0; //Simulates driving forward
+double dummy_drive_forwards = 0; //Simulates driving forward
 
 bool dummy_laser_sensor = false; //Simulates the successful pickup of a block
 
@@ -32,19 +38,13 @@ int object_max_y = 0; //the 0 in this decleration represents how many Columns (f
 void FindObjectCentre()
 {
 	//DECLERATIONS + FINDING WHITE IN INPUT IMAGE!!!
-	object_min_x = 0;
-		FindObjectMinX();
+	object_min_x = FindObjectMinX();
 
-	object_max_x = 0;
-		FindObjectMaxX();
+	object_max_x = FindObjectMaxX();
 
-	object_min_y = 0;
-		FindObjectMinY();
+	object_min_y = FindObjectMinY();
 
-	object_max_y = 0;
-		FindObjectMaxY();
-
-	//int object_max_y = First white pixel with the highest Y value
+	object_max_y = FindObjectMaxY();
 
 	//IMPORTANT IF NO PIXEL IS FOUND THE VALUE WILL REMAIN AT 0
 
@@ -54,8 +54,7 @@ void FindObjectCentre()
 	if((object_max_x = 0) || (object_max_y = 0)) 
 	{
 		//this will trigger if there are no white pixels
-		FindObjectCentre();
-	}
+		FindObjectCentre();	}
 		else
 		{
 			//CENTRE OF Object FOUND
@@ -69,7 +68,7 @@ void FindObjectCentre()
 
 			std::cout << "Y value of the centre: " << object_centre[1] << std::endl; //too see if program has run
 
-																					//Switch to driving phase
+														//Switch to driving phase
 
 			SteerToObject();
 		}
@@ -138,28 +137,36 @@ void PickUpObject()
 
 
 //FUNCTIONS FINDING THE OBJECT'S MIN AND MAX VALUES
-void FindObjectMinX()
+int FindObjectMinX(int _val)
 {
 	//int ObjectMinX = First white pixel with the lowest X value
+
+    return _val;
 }
 
 
 
-void FindObjectMaxX()
+int FindObjectMaxX(int _val)
 {
 	//int ObjectMaxX = First white pixel with the highest X value
+
+    return _val;
 }
 
 
-void FindObjectMinY()
+int FindObjectMinY(int _val)
 {
 	//int ObjectMinY = First white pixel with the lowest Y value
+
+    return _val;
 }
 
 
-void FindObjectMaxY()
+int FindObjectMaxY(int _val)
 {
 	//int ObjectMaxY = First white pixel with the highest Y value
+
+    return _val;
 }
 
 
