@@ -13,7 +13,7 @@
 //#include <GripPipeline.h>
 
 //all referances to the white object in the input will be refered to as simply "Object", for simplicity's sake
-//GLOBAL DECLERATIONS
+//DECLERATIONS
 //########################################################################################
 double dummy_turn_left = 0; //Simulates turning left
 
