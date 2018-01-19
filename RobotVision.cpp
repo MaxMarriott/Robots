@@ -1,92 +1,101 @@
-//#include required things
+//VISION PROTOTYPE/SKELETON
+//####################################
+
+//#include required include statements
 #include <iostream>
-#include <GripPipeline.cpp>
-#include <GripPipeline.h>
+//#include <GripPipeline.cpp>
+//#include <GripPipeline.h>
 
 //all referances to the white object in the input will be refered to as simply "Object", for simplicity's sake
+//GLOBAL DECLERATIONS
+//########################################################################################
+int dummy_turn_left = 0; //Simulates turning left
 
-void main()
-{
-	int DummyTurnLeft = 0; //Simulates turning left
+int dummy_turn_right = 0; //Simulates turning right
 
-	int DummyTurnRight = 0; //Simulates turning right
+int dummy_drive_forwards = 0; //Simulates driving forward
 
-	int DummyDriveForwards = 0; //Simulates driving forward
+bool dummy_laser_sensor = false; //Simulates the successful pickup of a block
 
-	bool DummyLaserSensor; //Simulates the successful pickup of a block
-	
-	int ObjectMinPrev = 0; //creates a copy of the max of Y from the previous frame
+int object_y_min_prev = 0; //creates a copy of the max of Y from the previous frame
 
-	findObjectCentre();} //Declares variables for the program.
+int object_centre[2] = { 1, 1 }; //object_centre[0] = x value, objectcentre[1] = y value
 
-void findObjectCentre()
+int object_min_x = 0; //the 0 in this decleration represents how many rows UP the FIRST white pixel is! 
+
+int object_max_x = 0; //the 0 in this decleration represents how many rows UP the LAST white pixel is! 
+
+int object_min_y = 0; //the 0 in this decleration represents how many Columns (from left to right) the first white pixel is! 
+
+int object_max_y = 0; //the 0 in this decleration represents how many Columns (from left to right) the last white pixel is! 
+
+void FindObjectCentre()
 {
 	//DECLERATIONS + FINDING WHITE IN INPUT IMAGE!!!
-		int ObjectMinX = 0;
-		ObjectMinX(0);
+	object_min_x = 0;
+		FindObjectMinX();
 
-		int ObjectMaxX = 0;
+	object_max_x = 0;
+		FindObjectMaxX();
 
-		objectMaxX(0);
+	object_min_y = 0;
+		FindObjectMinY();
 
-		int ObjectMinY = 0;
-		ObjectMinY(0);
+	object_max_y = 0;
+		FindObjectMaxY();
 
-		int ObjectMaxY = 0;
+	//int object_max_y = First white pixel with the highest Y value
 
-		objectMaxY(0);
-
-		//int ObjectMaxY = First white pixel with the highest Y value
-
-		//IMPORTANT IF NO PIXEL IS FOUND THE VALUE WILL REMAIN AT 0
-
-		int ObjectCentre[2]; //ObjectCentre[0] = x value, ObjectCentre[1] = y value
+	//IMPORTANT IF NO PIXEL IS FOUND THE VALUE WILL REMAIN AT 0
 
 
-		//Bool IsObjectPresent = true; //True if there are no white pixels from the input.
+	//Bool IsObjectPresent = true; //True if there are no white pixels from the input.
 
-		If ((ObjectMaxX = 0) || (ObjectMaxY = 0))		{
-			FindObjectCentre();
-		}
+	if((object_max_x = 0) || (object_max_y = 0)) 
+	{
+		//this will trigger if there are no white pixels
+		FindObjectCentre();
+	}
 		else
 		{
 			//CENTRE OF Object FOUND
 
-				ObjectCentre[0] = (ObjectMaxX + ObjectMinX) / 2; //X value calculated
+			object_centre[0] = (object_max_x + object_min_x) / 2; //X value calculated
 
-				ObjectCentre[1] = (ObjectMaxY + ObjectMinY) / 2; //Y value calculated
+			object_centre[1] = (object_max_y + object_min_y) / 2; //Y value calculated
 
-				//NON IMPORTANT THINGS HERE
-					std::cout << "X value of the centre: " << ObjectCentre[0] << std::endl;
+															 //NON IMPORTANT THINGS HERE
+			std::cout << "X value of the centre: " << object_centre[0] << std::endl;
 
-					std::cout << "Y value of the centre: " << ObjectCentre[1] << std::endl; //too see if program has run
+			std::cout << "Y value of the centre: " << object_centre[1] << std::endl; //too see if program has run
 
-				//Switch to driving phase
+																					//Switch to driving phase
 
-					steerToObject();
+			SteerToObject();
 		}
 }
 
-void steerToObject()
+void SteerToObject()
 {
-	while(int ObjectCentre[0] > 75) //moves left until approximately at the centre
+	while (object_centre[0] > 75) //moves left until approximately at the centre
 	{
-		DummyTurnLeft = 1;
+		dummy_turn_left = 1;
 
 		FindObjectCentre();
 	}
 
-	DummyTurnLeft = 0; //stops turning left
+	dummy_turn_left = 0; //stops turning left
 
-	while(ObjectCentre[0] < 65) //moves right until approximately at the centre
+	while (object_centre[0] < 65) //moves right until approximately at the centre
 	{
-		DummyTurnRight = 1;
+		dummy_turn_right = 1;
 
-		FindObjectCentre();	}
+		FindObjectCentre();
+	}
 
-	DummyTurnRight = 0; //Stops turning right
+	dummy_turn_right = 0; //Stops turning right
 
-	if ((ObjectCentre[0] > 75) || (ObjectCentre[0] < 65))			//to ensure the robot did not drive to far to the right or left!
+	if ((object_centre[0] > 75) || (object_centre[0] < 65))			//to ensure the robot did not drive to far to the right or left!
 	{
 		FindObjectCentre();
 	}
@@ -96,52 +105,67 @@ void steerToObject()
 	}
 }
 
-void pickUpObject()
+void PickUpObject()
 {
-
-	ObjectMinYPrev = ObjectMinY; //creates a copy of the max of Y from the previous frame
-	while ((ObjectMinY > 10) && (ObjectminYPrev > 10))
+	//The ROBOT LOWERS ITS FORKS TO PICK UP CUBE AND TRAVELS TO PICK THE BLOCK UP
+	object_y_min_prev = object_min_y; //creates a copy of the max of Y from the previous frame
+	while ((object_min_y > 10) && (object_y_min_prev > 10))
 	{
-		ObjectMinYPrev = ObjectMinY;
-		DummyDriveForwards = 1;
-
+		object_y_min_prev = object_min_y;
+		dummy_drive_forwards = 1; 
+		//Turning the motor on and off is just an digital example representing the analog process of slowing down the robot! 
+		FindObjectMinX(); //checks where the lowest pixel of white is.
 	}
 
-	Ready; //Pickup
+ //At this point the block SHOULD be almost in the loading bay, this while statement while jiggle the block into place 
 
-	while (DummyLaserSensor == false)
+	while (dummy_laser_sensor == false)
 	{
-		DummyDriveForwards = 0;
-		std::sleep_for(50); //sleep for 50 ms
-		DummyDriveForwards = 1;
+		dummy_drive_forwards = 0;
+		//This is a very archaeic way of loading the block into the fork's rollers, we will find a better way  
+		dummy_drive_forwards = 1;
 	}
-	DummyDriveForwards = 0;
-	cout << "It has finished" << endl;
+	dummy_drive_forwards = 0;
+	std::cout << "It has finished" << std::endl;
 }
 
 
+//IMPORTANT IDEA
+//===================
+//USING THE PIGEON WE SHOULD BE ABLE TO CALCULATE WHERE WE HAVE TRAVELED TO PICK UP THE BLOCK
+//AND THEREFORE BACKTRACK WHERE WE HAD BEEN UNTIL WE SEE ANOTHER BLOCK AND THEREFORE WE CAN 
+//USE THIS SCRIPT AGAIN!
 
-//FUNCTIONS FINDING THE OBJECT'S MIN and Max Values
-int findObjectMinX (int ObjectMinX)
+
+//FUNCTIONS FINDING THE OBJECT'S MIN AND MAX VALUES
+void FindObjectMinX()
 {
 	//int ObjectMinX = First white pixel with the lowest X value
 }
 
 
 
-int findObjectMaxX (int ObjectMaxX)
+void FindObjectMaxX()
 {
 	//int ObjectMaxX = First white pixel with the highest X value
 }
 
 
-int findObjectMinY (int ObjectMinY)
+void FindObjectMinY()
 {
 	//int ObjectMinY = First white pixel with the lowest Y value
 }
 
 
-int findObjectMaxY (int ObjectMaxY)
+void FindObjectMaxY()
 {
 	//int ObjectMaxY = First white pixel with the highest Y value
+}
+
+
+
+void main() //main
+{
+	FindObjectCentre();
+
 }
