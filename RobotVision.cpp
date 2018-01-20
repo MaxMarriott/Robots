@@ -95,19 +95,22 @@ void SteerToObject()
 {
 	while (object_centre[0] > 75) //moves left until approximately at the centre
 	{
+		//debug:
+		std::cout << "turning left" << std::endl;
 		
 		dummy_turn_left = 1;
 
 		FindObjectCentre();
 		
-		//debug:
-	std::cout << "turning left" << std::endl;
+		
 	}
 
 	dummy_turn_left = 0; //stops turning left
 
 	while (object_centre[0] < 65) //moves right until approximately at the centre
 	{
+		std::cout << "turning right" << std::endl;
+		
 		dummy_turn_right = 1;
 
 		FindObjectCentre();
