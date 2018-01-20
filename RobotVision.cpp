@@ -1,4 +1,3 @@
-
 //VISION PROTOTYPE/SKELETON
 //####################################
 
@@ -35,16 +34,34 @@ int object_min_y = 0; //the 0 in this decleration represents how many Columns (f
 
 int object_max_y = 0; //the 0 in this decleration represents how many Columns (from left to right) the last white pixel is! 
 
+void FindObjectCentre();
+
+void SteerToObject();
+
+void PickUpObject();
+
+int FindObjectMinX(int _val);
+
+int FindObjectMaxX(int _val);
+
+int FindObjectMinY(int _val);
+
+int FindObjectMaxY(int _val);
+
 void FindObjectCentre()
 {
 	//DECLERATIONS + FINDING WHITE IN INPUT IMAGE!!!
-	object_min_x = FindObjectMinX();
+	object_min_x = 
+	FindObjectMinX(0);
 
-	object_max_x = FindObjectMaxX();
+	object_max_x =
+	FindObjectMaxX(0);
 
-	object_min_y = FindObjectMinY();
+	object_min_y = 
+	FindObjectMinY(0);
 
-	object_max_y = FindObjectMaxY();
+	object_max_y = 
+	FindObjectMaxY(0);
 
 	//IMPORTANT IF NO PIXEL IS FOUND THE VALUE WILL REMAIN AT 0
 
@@ -78,9 +95,13 @@ void SteerToObject()
 {
 	while (object_centre[0] > 75) //moves left until approximately at the centre
 	{
+		
 		dummy_turn_left = 1;
 
 		FindObjectCentre();
+		
+		//debug:
+	std::cout << "turning left" << std::endl;
 	}
 
 	dummy_turn_left = 0; //stops turning left
@@ -113,7 +134,7 @@ void PickUpObject()
 		object_y_min_prev = object_min_y;
 		dummy_drive_forwards = 1; 
 		//Turning the motor on and off is just an digital example representing the analog process of slowing down the robot! 
-		FindObjectMinX(); //checks where the lowest pixel of white is.
+		FindObjectMinX(0); //checks where the lowest pixel of white is.
 	}
 
  //At this point the block SHOULD be almost in the loading bay, this while statement while jiggle the block into place 
@@ -141,7 +162,7 @@ int FindObjectMinX(int _val)
 {
 	//int ObjectMinX = First white pixel with the lowest X value
 //Debug
-std::cout << "value for Min X" << endl;
+std::cout << "value for Min X" << std::endl;
 std::cin >> _val;
 	
     return _val;
@@ -153,7 +174,7 @@ int FindObjectMaxX(int _val)
 {
 	//int ObjectMaxX = First white pixel with the highest X value
 //Debug
-std::cout << "value for Max X" << endl;	
+std::cout << "value for Max X" << std::endl;	
 std::cin >> _val;
 
     return _val;
@@ -164,7 +185,7 @@ int FindObjectMinY(int _val)
 {
 	//int ObjectMinY = First white pixel with the lowest Y value
 //Debug
-std::cout << "value for Min Y" << endl;	
+std::cout << "value for Min Y" << std::endl;	
 std::cin >> _val;
 
     return _val;
@@ -176,7 +197,7 @@ int FindObjectMaxY(int _val)
 	//int ObjectMaxY = First white pixel with the highest Y value
 	
 //Debug
-std::cout << "value for Max Y" << endl;
+std::cout << "value for Max Y" << std::endl;
 std::cin >> _val;
 
     return _val;
@@ -184,8 +205,8 @@ std::cin >> _val;
 
 
 
-void main() //main
+int main() //main
 {
 	FindObjectCentre();
-
+    return 0;
 }
