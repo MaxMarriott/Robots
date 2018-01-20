@@ -111,9 +111,6 @@ void SteerToObject()
 		dummy_turn_right = 1;
 
 		FindObjectCentre();
-	
-	//debug:
-	std::cout << "turning right" << std::endl;
 	}
 
 	dummy_turn_right = 0; //Stops turning right
@@ -198,18 +195,16 @@ std::cin >> _val;
 int FindObjectMaxY(int _val)
 {
 	//int ObjectMaxY = First white pixel with the highest Y value
-	
-//Debug
-std::cout << "value for Max Y" << std::endl;
+	//Debug
+std::cout << "value for Min Y" << std::endl;	
 std::cin >> _val;
 
     return _val;
 }
 
-
-
-int main() //main
+int main() 
 {
-	FindObjectCentre();
+    FindObjectCentre();
+    //debug
     return 0;
 }
