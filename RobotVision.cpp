@@ -205,9 +205,8 @@ std::cin >> _val;
     return _val;
 }
 
-int main() 
+void main() 
 {
     FindObjectCentre();
     //debug
-    return 0;
 }
