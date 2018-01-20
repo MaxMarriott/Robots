@@ -111,6 +111,9 @@ void SteerToObject()
 		dummy_turn_right = 1;
 
 		FindObjectCentre();
+	
+	//debug:
+	std::cout << "turning right" << std::endl;
 	}
 
 	dummy_turn_right = 0; //Stops turning right
